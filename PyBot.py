@@ -201,7 +201,7 @@ def detect_skill_type(message):
     return "default"
 
 def send_to_discord(username, entries):
-    """Discord webhook sender with dynamic avatars and full timestamps in username."""
+    """Discord webhook sender with dynamic avatars and skill/level in username."""
     try:
         logger.debug(f"Preparing Discord message for {username} ({len(entries)} entries)")
 
@@ -293,21 +293,32 @@ def send_to_discord(username, entries):
             }
         }
 
-        # Determine the most recent skill and its full timestamp
+        # Determine the most recent skill and level
         latest_skill = "default"
-        achievement_time = datetime.now().strftime('%H:%M:%S')  # Default to current time with seconds
+        level_info = ""
         if entries:
-            latest_entry = entries[-1]
-            latest_skill = detect_skill_type(latest_entry['message'])
-            # Extract full time (HH:MM:SS)
-            achievement_time = latest_entry['timestamp'].split(' ')[1]
+            latest_entry = entries[-1]['message']
+            latest_skill = detect_skill_type(latest_entry)
+
+            # Extract level information for level up messages
+            if latest_entry.startswith("Levelled up"):
+                # Extract the new level number (after "to")
+                level_parts = latest_entry.split()
+                if len(level_parts) >= 5:
+                    new_level = level_parts[-1]
+                    level_info = f"→ {new_level}"
+
+            # Format username with skill and level
+            username_display = f"{username} {latest_skill.title()} {level_info}"
+        else:
+            username_display = username
 
         skill_data = SKILL_DATA.get(latest_skill, SKILL_DATA["default"])
 
-        # Create webhook with dynamic avatar and full timestamp in username
+        # Create webhook with dynamic avatar and skill/level in username
         webhook = DiscordWebhook(
             url=WEBHOOK_URL,
-            username=f"{username} @ {achievement_time}",  # Includes seconds
+            username=username_display,
             avatar_url=skill_data["avatar"]
         )
 
