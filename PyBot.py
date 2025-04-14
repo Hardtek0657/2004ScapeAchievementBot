@@ -8,8 +8,8 @@ import logging
 from datetime import datetime
 
 # Config
-WEBHOOK_URL = "https://discord.com/api/webhooks/1361221834267430972/HqeowwmKsjtuvozUB2Iquk7lwQvgjAjfN4kEi0uxdaE_dD-eo_IE3uTkLzQ5Zzy2doCv"
-PLAYERS_TO_TRACK = ["idyl"]
+WEBHOOK_URL = ""
+PLAYERS_TO_TRACK = ["CoreStar", "Tomy"]
 ADVENTURE_LOG_FILE = "adventure_logs.json"
 BASE_URL = "https://2004.lostcity.rs/player/adventurelog/"
 
