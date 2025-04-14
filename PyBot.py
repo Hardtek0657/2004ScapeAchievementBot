@@ -166,6 +166,7 @@ def detect_skill_type(message):
     """Determine skill type from exact skill name matches."""
     message_lower = message.lower()
 
+
     # List of all 19 skills in alphabetical order
     skills = [
         "agility",
@@ -195,8 +196,12 @@ def detect_skill_type(message):
             return skill
 
     # Special case for quests
-    if "quest" in message_lower:
+    if "quest complete" in message_lower:
         return "quest"
+
+    # Check for random events first
+    if "failed random event" in message_lower:
+        return "event"
 
     return "default"
 
@@ -283,9 +288,13 @@ def send_to_discord(username, entries):
                 "emoji": "<:icon_6_3:1361178872691036337>",
                 "avatar": "https://7db.pw/b7dfd8bf.png"
             },
+            "event": {
+                "emoji": "<:icon_event_1_1:1361354881725890682>",
+                "avatar": "http://7db.pw/a162767.jpg"
+            },
             "quest": {
-                "emoji": "📜",
-                "avatar": "https://i.imgur.com/quest_avatar.png"
+                "emoji": "<:icon_quest_1_1:1361369660141998360>",
+                "avatar": "http://7db.pw/f7232a.png"
             },
             "default": {
                 "emoji": "⏱️",
@@ -300,16 +309,23 @@ def send_to_discord(username, entries):
             latest_entry = entries[-1]['message']
             latest_skill = detect_skill_type(latest_entry)
 
-            # Extract level information for level up messages
-            if latest_entry.startswith("Levelled up"):
+            # Handle different display cases
+            if latest_skill == "event":
+                # For random events, show "Random Event" instead of level
+                username_display = f"{username} → Random Event!"
+            elif latest_skill == "quest":
+                # For random events, show "Random Event" instead of level
+                username_display = f"{username} → Quest Update!"
+            elif latest_entry.startswith("Levelled up"):
                 # Extract the new level number (after "to")
                 level_parts = latest_entry.split()
                 if len(level_parts) >= 5:
                     new_level = level_parts[-1]
                     level_info = f"→ {new_level}"
-
-            # Format username with skill and level
-            username_display = f"{username} {latest_skill.title()} {level_info}"
+                username_display = f"{username} {latest_skill.title()} {level_info}"
+            else:
+                # Default case without level info
+                username_display = f"{username} {latest_skill.title()}"
         else:
             username_display = username
 
