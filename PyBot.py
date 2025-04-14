@@ -8,8 +8,8 @@ import logging
 from datetime import datetime
 
 # Config
-WEBHOOK_URL = ""
-PLAYERS_TO_TRACK = ["tomy", "corestar"]
+WEBHOOK_URL = "https://discord.com/api/webhooks/1361221834267430972/HqeowwmKsjtuvozUB2Iquk7lwQvgjAjfN4kEi0uxdaE_dD-eo_IE3uTkLzQ5Zzy2doCv"
+PLAYERS_TO_TRACK = ["idyl"]
 ADVENTURE_LOG_FILE = "adventure_logs.json"
 BASE_URL = "https://2004.lostcity.rs/player/adventurelog/"
 
@@ -209,79 +209,79 @@ def send_to_discord(username, entries):
         SKILL_DATA = {
             "agility": {
                 "emoji": "<:icon_2_2:1361178696819671140>",
-                "avatar": "http://7db.pw/dcbe.png"
+                "avatar": "https://7db.pw/dcbe.png"
             },
             "attack": {
                 "emoji": "<:icon_1_1:1361178692214325258>",
-                "avatar": "http://7db.pw/854af639.png"
+                "avatar": "https://7db.pw/854af639.png"
             },
             "cooking": {
                 "emoji": "<:icon_4_3:1361178836116701256>",
-                "avatar": "http://7db.pw/35d05.png"
+                "avatar": "https://7db.pw/35d05.png"
             },
             "crafting": {
                 "emoji": "<:icon_5_2:1361178838918496407>",
-                "avatar": "http://7db.pw/daa5.png"
+                "avatar": "https://7db.pw/daa5.png"
             },
             "defence": {
                 "emoji": "<:icon_3_1:1361178761382592676>",
-                "avatar": "http://7db.pw/27cd4cd.png"
+                "avatar": "https://7db.pw/27cd4cd.png"
             },
             "firemaking": {
                 "emoji": "<:icon_5_3:1361178839627333723>",
-                "avatar": "http://7db.pw/156f5a33.png"
+                "avatar": "https://7db.pw/156f5a33.png"
             },
             "fishing": {
                 "emoji": "<:icon_3_3:1361178764108890200>",
-                "avatar": "http://7db.pw/816ab403.png"
+                "avatar": "https://7db.pw/816ab403.png"
             },
             "fletching": {
                 "emoji": "<:icon_6_2:1361178871470362814>",
-                "avatar": "http://7db.pw/720c.png"
+                "avatar": "https://7db.pw/720c.png"
             },
             "herblore": {
                 "emoji": "<:icon_3_2:1361178762464464907>",
-                "avatar": "http://7db.pw/8c09c5b.png"
+                "avatar": "https://7db.pw/8c09c5b.png"
             },
             "hitpoints": {
                 "emoji": "<:icon_1_2:1361178693195792414>",
-                "avatar": "http://7db.pw/5f44d3bc.png"
+                "avatar": "https://7db.pw/5f44d3bc.png"
             },
             "magic": {
                 "emoji": "<:icon_6_1:1361178869549498501>",
-                "avatar": "http://7db.pw/b26eb0.png"
+                "avatar": "https://7db.pw/b26eb0.png"
             },
             "mining": {
                 "emoji": "<:icon_1_3:1361178694382784635>",
-                "avatar": "http://7db.pw/1a5ad7.png"
+                "avatar": "https://7db.pw/1a5ad7.png"
             },
             "prayer": {
                 "emoji": "<:icon_5_1:1361178838012399636>",
-                "avatar": "http://7db.pw/386e7150.png"
+                "avatar": "https://7db.pw/386e7150.png"
             },
             "ranged": {
                 "emoji": "<:icon_4_1:1361178765161533490>",
-                "avatar": "http://7db.pw/bf0c8794.png"
+                "avatar": "https://7db.pw/bf0c8794.png"
             },
             "runecrafting": {
                 "emoji": "<:icon_7_1:1361178874276483264>",
-                "avatar": "http://7db.pw/ec0e.png"
+                "avatar": "https://7db.pw/ec0e.png"
             },
             "smithing": {
                 "emoji": "<:icon_2_3:1361178760166117427>",
-                "avatar": "http://7db.pw/59afd783.png"
+                "avatar": "https://7db.pw/59afd783.png"
             },
             "strength": {
                 "emoji": "<:icon_2_1:1361178695473303693>",
-                "avatar": "http://7db.pw/dee41.png"
+                "avatar": "https://7db.pw/dee41.png"
             },
             "thieving": {
                 "emoji": "<:icon_4_2:1361178834971660439>",
-                "avatar": "http://7db.pw/6d4491.png"
+                "avatar": "https://7db.pw/6d4491.png"
             },
             "woodcutting": {
                 "emoji": "<:icon_6_3:1361178872691036337>",
-                "avatar": "http://7db.pw/b7dfd8bf.png"
+                "avatar": "https://7db.pw/b7dfd8bf.png"
             },
             "quest": {
                 "emoji": "📜",
