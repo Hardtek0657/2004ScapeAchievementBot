@@ -207,6 +207,10 @@ def detect_skill_type(message):
     if "failed random event" in message_lower:
         return "event"
 
+    # Check for clue scrolls
+    if "clue scroll" in message_lower:
+        return "clue"
+
     return "default"
 
 def send_to_discord(username, entries):
@@ -300,6 +304,10 @@ def send_to_discord(username, entries):
                 "emoji": "<:icon_quest_1_1:1361369660141998360>",
                 "avatar": "http://7db.pw/f7232a.png"
             },
+            "clue": {
+                "emoji": "<:icon_clue_1_1:1361377846743924836>",
+                "avatar": "http://7db.pw/c4b6e.png"
+            },
             "default": {
                 "emoji": "⏱️",
                 "avatar": "https://2004.lostcity.rs/img/logo_small.png"
@@ -320,6 +328,9 @@ def send_to_discord(username, entries):
             elif latest_skill == "quest":
                 # For random events, show "Random Event" instead of level
                 username_display = f"{username} → Quest Update!"
+            elif latest_skill == "clue":
+                # For clue scrolls, show "Clue Scroll" instead of level
+                username_display = f"{username} → Clue Update!"
             elif latest_entry.startswith("Levelled up"):
                 # Extract the new level number (after "to")
                 level_parts = latest_entry.split()
