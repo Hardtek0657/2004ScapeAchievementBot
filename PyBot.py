@@ -6,12 +6,16 @@ from discord_webhook import DiscordWebhook
 import time
 import logging
 from datetime import datetime
+from dotenv import load_dotenv
 
-# Config
-WEBHOOK_URL = ""
-PLAYERS_TO_TRACK = ["CoreStar", "Tomy"]
-ADVENTURE_LOG_FILE = "adventure_logs.json"
-BASE_URL = "https://2004.lostcity.rs/player/adventurelog/"
+# Load environment variables from .env file
+load_dotenv()
+
+# Config - now loaded from environment variables
+WEBHOOK_URL = os.getenv('WEBHOOK_URL')
+PLAYERS_TO_TRACK = [player.strip() for player in os.getenv('PLAYERS_TO_TRACK', '').split(',') if player.strip()]
+ADVENTURE_LOG_FILE = os.getenv('ADVENTURE_LOG_FILE', 'adventure_logs.json')
+BASE_URL = os.getenv('BASE_URL', 'https://2004.lostcity.rs/player/adventurelog/')
 
 # --- Enhanced Logging ---
 logging.basicConfig(
